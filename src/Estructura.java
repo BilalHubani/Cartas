@@ -16,4 +16,9 @@ public class Estructura extends Carta{
         super(nombre, elixir, vida);
         this.defensa = defensa;
     }
+
+    @Override
+    public int accion() {
+        return this.defensa+8;
+    }
 }

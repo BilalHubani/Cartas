@@ -16,4 +16,9 @@ public class Tropa extends Carta{
         super(nombre, elixir, vida);
         this.ataque = ataque;
     }
+
+    @Override
+    public int accion() {
+        return this.ataque/2;
+    }
 }

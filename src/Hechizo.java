@@ -26,4 +26,9 @@ public class Hechizo extends Carta{
         this.alcance = alcance;
         this.ataque = ataque;
     }
+
+    @Override
+    public int accion() {
+            return this.alcance*2/3;
+    }
 }

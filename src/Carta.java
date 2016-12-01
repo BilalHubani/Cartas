@@ -35,4 +35,7 @@ public class Carta {
         this.elixir = elixir;
         this.vida = vida;
     }
+    public int accion(){
+        return 0;
+    }
 }
