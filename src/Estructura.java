@@ -21,4 +21,11 @@ public class Estructura extends Carta{
     public int accion() {
         return this.defensa+8;
     }
+
+    @Override
+    public String toString() {
+        return "Estructura{"+ super.toString()+
+                " defensa=" + defensa +
+                "} " ;
+    }
 }

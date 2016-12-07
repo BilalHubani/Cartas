@@ -1,3 +1,6 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -5,8 +8,9 @@ import java.util.List;
  * Created by dam on 22/11/16.
  */
 public class cartasApp {
+    public static List <Carta> cartasDisponibles= new ArrayList<Carta>();
+    public static List <Jugador> jugadores= new ArrayList<Jugador>();
     public static void main(String[] args) {
-        List <Carta> cartasDisponibles= new ArrayList<Carta>();
         Tropa tropa1 = new Tropa("Stormtrooper",2,60,60);
         Tropa tropa2 = new Tropa("Koopa",3, 65, 80);
         Tropa tropa3 = new Tropa("Pikmin", 3, 40, 90);
@@ -25,7 +29,6 @@ public class cartasApp {
         cartasDisponibles.add(hechizo1);
         cartasDisponibles.add(hechizo2);
         cartasDisponibles.add(hechizo3);
-        List <Jugador> jugadores= new ArrayList<Jugador>();
         Jugador jugador1 = new Jugador("TochterDesMondes", "1");
         Jugador jugador2 = new Jugador("Bimu", "2");
         Jugador jugador3 = new Jugador("lolrol1", "3");
@@ -34,7 +37,7 @@ public class cartasApp {
         jugadores.add(jugador2);
         jugadores.add(jugador3);
         jugadores.add(jugador4);
-
+        elegirOpcion();
     }
     public static void elegirOpcion() {
         int opcion = 0;
@@ -43,13 +46,13 @@ public class cartasApp {
             opcion = pedirEntero("Elige una opción: ");
             switch (opcion) {
                 case 1:
-                    altaCliente();
+                    conseguirCartas();
                     break;
                 case 2:
-                    nuevoPresupuesto();
+
                     break;
                 case 3:
-                    presupuestosPorEstado("pendiente");
+
                     break;
                 case 4:
                     System.out.println("Gracias por jugar :)");
@@ -61,10 +64,91 @@ public class cartasApp {
         } while (opcion != 4);
     }
     public static void mostrarMenu(){
-        System.out.println("1. Alta cliente");
-        System.out.println("2. Nuevo presupuesto");
-        System.out.println("3. Presupuestos pendientes (de aceptar o rechazar)");
+        System.out.println("1. Conseguir cartas");
+        System.out.println("2. Batalla");
+        System.out.println("3. Ranking");
+        System.out.println("4. Salir");
+    }
+    public static int pedirEntero(String mensaje) {
+        // Variable para leer datos del teclado
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        // Variable para guardar el nº introducido por el usuario
+        int numero = 0;
+        // variable para comprobar si ha habido error al introducir el nº
+        boolean error;
+        do {
+            try {
+                // mostramos el msg para el usuario para pedir dato
+                System.out.println(mensaje);
+                // Leemos dato del teclado y lo convertimos a entero
+                numero = Integer.parseInt(br.readLine());
+                error = false;
+            } catch (IOException ex) {
+                System.out.println("Error de entrada y salida");
+                error = true;
+            } catch (NumberFormatException ex) {
+                System.out.println("No has introducido un nº entero.");
+                error = true;
+            }
+        } while (error);
+        return numero;
+    }
+    public static String pedirCadena(String mensaje) {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        String respuesta = "";
+        boolean error;
+        do {
+            try {
+                System.out.println(mensaje);
+                respuesta = br.readLine();
+                error = false;
+            } catch (IOException ex) {
+                System.out.println("Error de entrada / salida");
+                error = true;
+            }
+        } while (error);
+        return respuesta;
+    }
+    public static void conseguirCartas(){
+        Jugador player1 = null;
+        String usu;
+        boolean usue = true;
+        do {
+            usu = pedirCadena("Usuario: ");
+            for (Jugador j: jugadores) {
+                if (usu.equalsIgnoreCase(j.getUsuario()) && usue==true) {
+                    usue = false;
+                    player1 = j;
+                }
+            }
+        }while (usue);
+        String pass;
+        boolean passe = true;
+        do {
+            pass = pedirCadena("Password: ");
+                if (pass.equalsIgnoreCase(player1.getPassword()) && passe==true) {
+                    passe = false;
+                }
+        }while (passe);
+        System.out.println(cartasDisponibles);
+        if (player1.getCartasObtenidas().size()<6){
+            boolean error = true;
+            Carta aux;
+            String ncarta;
+            do {
+                ncarta = pedirCadena("Escribe el nombre de la carta que quieres añadir a tu mazo");
+                for (Carta c: cartasDisponibles){
+                    if (ncarta.equalsIgnoreCase(c.getNombre())) {
+                        for (int i=0; i<player1.getCartasObtenidas().size();i++){
+                            if (player1.getCartasObtenidas().get(i) == c){
 
-        System.out.println("8. Salir");
+                            }
+                        }
+
+                        error = false;
+                    }
+                }
+            }while (error);
+        }
     }
 }

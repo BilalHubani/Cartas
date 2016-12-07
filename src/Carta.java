@@ -38,4 +38,13 @@ public class Carta {
     public int accion(){
         return 0;
     }
+
+    @Override
+    public String toString() {
+        return "" +
+                "nombre='" + nombre + '\'' +
+                ", elixir=" + elixir +
+                ", vida=" + vida
+                ;
+    }
 }

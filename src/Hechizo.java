@@ -31,4 +31,12 @@ public class Hechizo extends Carta{
     public int accion() {
             return this.alcance*2/3;
     }
+
+    @Override
+    public String toString() {
+        return "Hechizo{"  + super.toString()+
+                " alcance=" + alcance +
+                ", ataque=" + ataque +
+                "} ";
+    }
 }

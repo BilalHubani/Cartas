@@ -21,4 +21,11 @@ public class Tropa extends Carta{
     public int accion() {
         return this.ataque/2;
     }
+
+    @Override
+    public String toString() {
+        return "Tropa{" + super.toString() +
+                " ataque=" + ataque +
+                "} " ;
+    }
 }
