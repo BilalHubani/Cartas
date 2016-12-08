@@ -131,24 +131,36 @@ public class cartasApp {
                 }
         }while (passe);
         System.out.println(cartasDisponibles);
+        do {
+            añadirCarta(player1);
+        }while(player1.getCartasObtenidas().size()<6);
+
+        for (int i = 0; i<jugadores.size(); i++){
+            System.out.println( jugadores.get(i).getUsuario());
+            System.out.println(jugadores.get(i).getCartasObtenidas());
+        }
+    }
+
+    public static void añadirCarta (Jugador player1){
         if (player1.getCartasObtenidas().size()<6){
-            boolean error = true;
-            Carta aux;
+            boolean obtener = false;
+            Carta aux= null;
             String ncarta;
-            do {
-                ncarta = pedirCadena("Escribe el nombre de la carta que quieres añadir a tu mazo");
-                for (Carta c: cartasDisponibles){
-                    if (ncarta.equalsIgnoreCase(c.getNombre())) {
-                        for (int i=0; i<player1.getCartasObtenidas().size();i++){
-                            if (player1.getCartasObtenidas().get(i) == c){
-
-                            }
+            System.out.println("Tienes "+player1.getCartasObtenidas().size()+" cartas en tu mazo");
+            ncarta = pedirCadena("Escribe el nombre de la carta que quieres añadir a tu mazo");
+            for (Carta c: cartasDisponibles){
+                if (ncarta.equalsIgnoreCase(c.getNombre())) {
+                    aux = c;
+                    for (int i=0; i<player1.getCartasObtenidas().size();i++){
+                        if (player1.getCartasObtenidas().get(i) == c){
+                            System.out.println("La carta ya la tienes añadida");
+                            obtener = true;
                         }
-
-                        error = false;
                     }
                 }
-            }while (error);
+            }
+            if (obtener == false)
+                player1.getCartasObtenidas().add(aux);
         }
     }
 }

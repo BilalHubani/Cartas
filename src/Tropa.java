@@ -26,6 +26,6 @@ public class Tropa extends Carta{
     public String toString() {
         return "Tropa{" + super.toString() +
                 " ataque=" + ataque +
-                "} " ;
+                "} \n" ;
     }
 }

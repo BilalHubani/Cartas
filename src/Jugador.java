@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -7,7 +8,7 @@ public class Jugador {
     private String usuario;
     private String password;
     private int trofeos;
-    private List <Carta> cartasObtenidas;
+    private List <Carta> cartasObtenidas = new ArrayList<>();
 
     public String getUsuario() {
         return usuario;

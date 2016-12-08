@@ -37,6 +37,6 @@ public class Hechizo extends Carta{
         return "Hechizo{"  + super.toString()+
                 " alcance=" + alcance +
                 ", ataque=" + ataque +
-                "} ";
+                "} \n";
     }
 }

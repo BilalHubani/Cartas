@@ -26,6 +26,6 @@ public class Estructura extends Carta{
     public String toString() {
         return "Estructura{"+ super.toString()+
                 " defensa=" + defensa +
-                "} " ;
+                "} \n";
     }
 }
