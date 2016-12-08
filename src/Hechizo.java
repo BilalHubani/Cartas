@@ -29,7 +29,8 @@ public class Hechizo extends Carta{
 
     @Override
     public int accion() {
-            return this.alcance*2/3;
+        // multiplico por tres debido a que afectara a 3 cartas
+            return this.alcance*2/3*3;
     }
 
     @Override

@@ -4,7 +4,7 @@ import java.util.List;
 /**
  * Created by dam on 22/11/16.
  */
-public class Jugador {
+public class Jugador implements Comparable<Jugador>{
     private String usuario;
     private String password;
     private int trofeos;
@@ -46,5 +46,16 @@ public class Jugador {
         this.usuario = usuario;
         this.password = password;
         this.trofeos = 0;
+    }
+
+    @Override
+    public int compareTo(Jugador o) {
+        if (trofeos > o.getTrofeos()) {
+            return 1;
+        } else if (trofeos < o.getTrofeos()) {
+            return -1;
+        } else {
+            return 0;
+        }
     }
 }
