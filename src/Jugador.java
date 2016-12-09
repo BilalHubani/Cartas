@@ -51,9 +51,9 @@ public class Jugador implements Comparable<Jugador>{
     @Override
     public int compareTo(Jugador o) {
         if (trofeos > o.getTrofeos()) {
-            return 1;
-        } else if (trofeos < o.getTrofeos()) {
             return -1;
+        } else if (trofeos < o.getTrofeos()) {
+            return 1;
         } else {
             return 0;
         }

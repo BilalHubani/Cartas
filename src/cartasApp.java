@@ -182,7 +182,7 @@ public class cartasApp {
         Jugador player2 = null;
         do {
             player2 = pedirJugador();
-        }while (player1 != player2);
+        }while (player1 == player2);
        while (player1.getCartasObtenidas().size()<3){
            System.out.println("No tienes sufientes cartas en tu mazo");
            añadirCarta(player1);
@@ -298,8 +298,10 @@ public class cartasApp {
         sumaVidaJ1 = sumaVidaJ1 - sumaAtaqueJ2;
         sumaVidaJ2 = sumaVidaJ2 - sumaAtaqueJ1;
         if (sumaVidaJ1>sumaVidaJ2){
+            player1.setTrofeos(player1.getTrofeos()+5);
             System.out.println("Gana el jugador 1 porque ha acabado con un total de " + (sumaVidaJ1-sumaVidaJ2) + " puntos de vida totales mas que el jugador 2");
         }else if (sumaVidaJ2>sumaVidaJ1){
+            player2.setTrofeos(player2.getTrofeos()+5);
             System.out.println("Gana el jugador 2 porque ha acabado con un total de " + (sumaVidaJ2-sumaVidaJ1) + " puntos de vida totales mas que el jugador 1");
         }else {
             System.out.println("Empate! los dos habeis acabado con la misma vida total");
